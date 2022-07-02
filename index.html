@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Random Quotes FCC</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <script src="/quotes.js"></script>
+    <script>
+
+      window.onload = init;
+      function init() {
+        generateQuote();
+      }
+
+      function generateQuote() {
+        const index = Math.floor(Math.random() * quotes.length);
+        const randomQuote = quotes[index];
+        let twitterLink =
+          "https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=";
+
+        // Add quote
+        let quoteInApiFormat = randomQuote.quote.replace(/ /g, "%20");
+        twitterLink += quoteInApiFormat;
+        // Add Author
+        let authorInApiFormat = randomQuote.author.replace(/ /g, "%20");
+        twitterLink += " - " + authorInApiFormat;
+
+        document.getElementById("tweet-quote").href = twitterLink;
+        document.getElementById("text").innerText = randomQuote.quote;
+        document.getElementById("author").innerText = randomQuote.author;
+      }
+    </script>
+  </head>
+  <body>
+    <div class="container py-5">
+      <wrapper id="quote-box">
+        <div class="card">
+          <div class="card-header">Random Quotes Machine</div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <div id="text"></div>
+            </h5>
+            <p class="card-text">
+                <p id="author"></p>
+            </p>
+            <button
+              id="new-quote"
+              onclick="generateQuote();"
+              class="btn btn-success"
+            >
+              Add Quote
+            </button>
+            <a href="#" id="tweet-quote" target="_blank" class="btn btn-primary"
+              >Tweet Quote</a
+            >
+          </div>
+        </div>
+      </wrapper>
+    </div>
+    <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+      integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+      integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
