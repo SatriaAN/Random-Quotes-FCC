@@ -8,9 +8,8 @@
       integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
       crossorigin="anonymous"
     />
-    <script src="/quotes.js"></script>
+    <script src="./quotes.js"></script>
     <script>
-
       window.onload = init;
       function init() {
         generateQuote();
@@ -44,9 +43,7 @@
             <h5 class="card-title">
               <div id="text"></div>
             </h5>
-            <p class="card-text">
-                <p id="author"></p>
-            </p>
+            <div id="author"></div>
             <button
               id="new-quote"
               onclick="generateQuote();"
